@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> 
+<meta charset="ISO-8859-1">
+<title>Appointments in a Beauty Salon </title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+ 	  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+      crossorigin="anonymous">
+
+</head>
+<body>
+<div align = "center" class = "container my-2">
+	<h1>Appointments in a beauty salon</h1>
+	<a th:href = "@{/showNewPersonForm}" class = "btn btn-primary btn-sm mb-3"> Add Appointment</a>
+	
+	<table border = "1" class = "table table-striped"> 
+	<thead>
+		<tr class = "table-danger">
+			<th > First Name</th>
+			 	<th  > Last Name</th>
+					<th > Number </th>
+					<th >Date </th>
+					<th>Actions</th>
+		</tr>
+	</thead>
+		<tbody>
+			<tr class="table-secondary" th:each= "appointment: ${listAppointments}">
+			<td th:text="${appointment.firstName}"></td>
+			<td th:text="${appointment.lastName}"></td>
+			<td th:text="${appointment.number}"></td>
+			<td th:text="${appointment.time}"></td>
+			<td ><a th:href="@{/showFormForUpdate/{id}(id=${appointment.id})}" class ="btn btn-light">UPDATE</a> 
+			<a th:href="@{/deletePerson/{id}(id=${appointment.id})}" class ="btn btn-secondary">DELETE</a>
+			</td>
+					 
+			</tr>
+		</tbody>
+		
+	</table>
+	</div>
+</body>
+</html>
